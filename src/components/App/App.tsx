@@ -1,14 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TextComponent from '../TestComponent';
+
+const user = {
+  name: 'Glauber',
+  age: 32,
+  email: 'glaub.oliveira@hotmail.com'
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <p>
-          Hello word!
+          Bem vindo!
         </p>
+        <TextComponent user={user} />
       </header>
     </div>
   );
