@@ -7,7 +7,10 @@ declare interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ onClick, appendIcon, children }) => (
-    <button className='AppButton' onClick={onClick}>
+    <button 
+      className='AppButton' 
+      onClick={onClick}
+    >
         {children || 'nameless button'}
         {appendIcon}
     </button>
