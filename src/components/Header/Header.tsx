@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.css'
 
-interface HeaderProps {
+declare interface HeaderProps {
     title: string;
 }
 
