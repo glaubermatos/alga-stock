@@ -19,7 +19,7 @@ function App() {
 
   const [products, setProducts] = useState(Products)
 
-  const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>(products[0])
+  const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>()
 
   const handleProductSubmit = (product: ProductCreator) => {
     setProducts([
@@ -41,12 +41,27 @@ function App() {
     setUpdatingProduct(undefined)
   }
 
+  const handleEditProduct = (product: Product) => {
+    setUpdatingProduct(product)
+  }
+
+  const hadleDeleteProduct = (deletingProduct: Product) => {
+    console.log(deletingProduct)
+  }
+
   return (
     <div className="App">
       <Header title='AlgaStock' />
 
       <Container >
-        <Table data={products} headers={headers} />
+        <Table
+          data={products}
+          headers={headers}
+          enableActions
+          onDelete={hadleDeleteProduct}
+          onDetail={() => console.log('detail')}
+          onEdit={handleEditProduct}
+        />
 
         <ProductForm
           form={updatingProduct}
