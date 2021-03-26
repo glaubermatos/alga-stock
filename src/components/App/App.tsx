@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2'
+
 import Container from '../../shared/Container';
 import Table from '../../shared/Table';
 import { TableHeader } from '../../shared/Table/Table';
@@ -41,12 +43,44 @@ function App() {
     setUpdatingProduct(undefined)
   }
 
-  const handleEditProduct = (product: Product) => {
+  const handleProductEdit = (product: Product) => {
     setUpdatingProduct(product)
   }
 
-  const hadleDeleteProduct = (deletingProduct: Product) => {
-    console.log(deletingProduct)
+  const handleProductDetail = (product: Product) => {
+    Swal.fire(
+      'Product details',
+      `${product.name} coast $${product.price} and we have ${product.stock} available in stock`,
+      'info'
+    )
+  }
+
+  const deleteProduct = (id: number) => {
+    setProducts(products.filter(product => product.id !== id))
+  }
+
+  const hadleProductDelete = (deletingProduct: Product) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#09f',
+      cancelButtonColor: '#d33',
+      confirmButtonText: `Yes, delete ${deletingProduct.name}!`
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        deleteProduct(deletingProduct.id)
+
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+
   }
 
   return (
@@ -58,9 +92,9 @@ function App() {
           data={products}
           headers={headers}
           enableActions
-          onDelete={hadleDeleteProduct}
-          onDetail={() => console.log('detail')}
-          onEdit={handleEditProduct}
+          onDelete={hadleProductDelete}
+          onDetail={handleProductDetail}
+          onEdit={handleProductEdit}
         />
 
         <ProductForm

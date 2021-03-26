@@ -120,8 +120,8 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
             />
 
             <Button>
-                Submit
-          </Button>
+                {form.id ? 'Update' : 'Submit'}
+            </Button>
         </Form>
     )
 }
