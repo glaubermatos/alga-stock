@@ -1,47 +1,30 @@
-import React, { useState } from 'react';
-import Button from '../../shared/Button';
+import React from 'react';
 import Container from '../../shared/Container';
-import Input from '../../shared/Input';
+import Table from '../../shared/Table';
+import { TableHeader } from '../../shared/Table/Table';
+import Products from '../../shared/Table/Table.mockdata';
 import Header from '../Header';
+import ProductForm from '../Products/ProductForm';
 import './App.css';
 
-function TestComponent () {
-  return <img width='30px' src="https://qualificamaisbrasil.com.br/wp-content/uploads/2018/09/icone-check-1.png" alt="check icon"/>
-}
+const headers: TableHeader[] = [
+  { key: 'id', value: '#' },
+  { key: 'name', value: 'Product' },
+  { key: 'price', value: 'Price', right: true },
+  { key: 'stock', value: 'Available stock', right: true },
+]
+
 
 function App() {
 
-  const handleClick = () => {
-    window.alert(`nome ${nome} preco ${preco}`)
-  }
-
-  const [nome, setNome] = useState('');
-  const [preco, setPreco] = useState('');
-
   return (
     <div className="App">
-      <Header title='AlgaStock'/>
+      <Header title='AlgaStock' />
 
       <Container >
-        <Input 
-          label='Nome produto'
-          placeholder='Informe o nome do produto'
-          value={nome}
-          onChange={e => setNome(e.target.value)}
-        />
-        <Input 
-          label='Preço produto'
-          placeholder='Informe o preço do produto'
-          value={preco}
-          onChange={e => setPreco(e.target.value)}
-        />
+        <Table data={Products} headers={headers} />
 
-        <Button 
-          onClick={() => handleClick()}
-          appendIcon={<TestComponent />}
-        >
-          Salvar
-        </Button>  
+        <ProductForm />
       </Container>
     </div>
   );
