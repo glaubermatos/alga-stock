@@ -1,5 +1,5 @@
 export interface Product {
-    id: number;
+    _id: string;
     name: string;
     price: number;
     stock: number;
@@ -7,31 +7,31 @@ export interface Product {
 
 const Products: Product[] = [
     {
-        id: 1,
+        _id: '1',
         name: 'Cookies',
         price: 0.75,
         stock: 20
     },
     {
-        id: 2,
+        _id: '2',
         name: 'Milk 1L',
         price: 0.99,
         stock: 30
     },
     {
-        id: 3,
+        _id: '3',
         name: 'Detergent',
         price: 0.70,
         stock: 120
     },
     {
-        id: 4,
+        _id: '4',
         name: 'Apple 1KG',
         price: 0.20,
         stock: 200
     },
     {
-        id: 5,
+        _id: '5',
         name: 'Cookies',
         price: 0.75,
         stock: 20

@@ -5,13 +5,13 @@ import { getAllProducts } from '../../services/Products.service';
 import Container from '../../shared/Container';
 import Table from '../../shared/Table';
 import { TableHeader } from '../../shared/Table/Table';
-import Products, { Product } from '../../shared/Table/Table.mockdata';
+import { Product } from '../../shared/Table/Table.mockdata';
 import Header from '../Header';
 import ProductForm, { ProductCreator } from '../Products/ProductForm';
 import './App.css';
 
 const headers: TableHeader[] = [
-  { key: 'id', value: '#' },
+  /* { key: '_id', value: '#' }, */
   { key: 'name', value: 'Product' },
   { key: 'price', value: 'Price', right: true },
   { key: 'stock', value: 'Available stock', right: true },
@@ -38,7 +38,7 @@ function App() {
     setProducts([
       ...products,
       {
-        id: products.length + 1,
+        _id: String(products.length + 1),
         ...product
       }
     ])
@@ -46,7 +46,7 @@ function App() {
 
   const handleProductUpdate = (updatedProduct: Product) => {
     setProducts(products.map(product =>
-      product.id === updatedProduct.id
+      product._id === updatedProduct._id
         ? updatedProduct
         : product
     ))
@@ -66,8 +66,8 @@ function App() {
     )
   }
 
-  const deleteProduct = (id: number) => {
-    setProducts(products.filter(product => product.id !== id))
+  const deleteProduct = (id: string) => {
+    setProducts(products.filter(product => product._id !== id))
     setUpdatingProduct(undefined)
   }
 
@@ -83,7 +83,7 @@ function App() {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        deleteProduct(deletingProduct.id)
+        deleteProduct(deletingProduct._id)
 
         Swal.fire(
           'Deleted!',
