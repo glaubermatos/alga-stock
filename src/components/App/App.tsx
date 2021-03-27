@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2'
+import { getAllProducts } from '../../services/Products.service';
 
 import Container from '../../shared/Container';
 import Table from '../../shared/Table';
@@ -19,7 +20,17 @@ const headers: TableHeader[] = [
 
 function App() {
 
-  const [products, setProducts] = useState(Products)
+  const [products, setProducts] = useState<Product[]>([])
+
+  useEffect(() => {
+    async function fetchData() {
+      const _products = await getAllProducts()
+
+      setProducts(_products)
+    }
+
+    fetchData()
+  }, [])
 
   const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>()
 
@@ -57,6 +68,7 @@ function App() {
 
   const deleteProduct = (id: number) => {
     setProducts(products.filter(product => product.id !== id))
+    setUpdatingProduct(undefined)
   }
 
   const hadleProductDelete = (deletingProduct: Product) => {
