@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2'
+
+import Header from '../Header';
+import Container from '../../shared/Container';
+import Table from '../../shared/Table';
+import { TableHeader } from '../../shared/Table/Table';
+import { Product } from '../../shared/Table/Table.mockdata';
+import ProductForm, { ProductCreator } from '../Products/ProductForm';
 import {
   createSingleProduct,
   deleteSingleProduct,
@@ -7,12 +14,6 @@ import {
   updateSingleProduct
 } from '../../services/Products.service';
 
-import Container from '../../shared/Container';
-import Table from '../../shared/Table';
-import { TableHeader } from '../../shared/Table/Table';
-import { Product } from '../../shared/Table/Table.mockdata';
-import Header from '../Header';
-import ProductForm, { ProductCreator } from '../Products/ProductForm';
 import './App.css';
 
 const headers: TableHeader[] = [
