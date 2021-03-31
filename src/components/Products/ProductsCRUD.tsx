@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Swal from 'sweetalert2'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 
 import Table from '../../shared/Table'
 import ProductForm from '../Products/ProductForm'
@@ -8,6 +8,8 @@ import ProductForm from '../Products/ProductForm'
 import { TableHeader } from '../../shared/Table/Table'
 import { Product } from '../../shared/Table/Table.mockdata'
 import { ProductCreator } from '../../components/Products/ProductForm'
+
+import { insertNewProduct } from '../../redux/Products/Products.actions'
 
 import {
     getAllProducts,
@@ -29,8 +31,11 @@ declare interface ProductsCRUDProps {
 
 const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
 
+    const dispatch = useDispatch()
+
     // const [products, setProducts] = useState<Product[]>([])
-    const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>()
+    const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>(undefined)
+
 
     useEffect(() => {
         fetchData()
@@ -45,7 +50,8 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
 
     const handleProductSubmit = async (product: ProductCreator) => {
         try {
-            await createSingleProduct(product)
+            // await createSingleProduct(product)
+            dispatch(insertNewProduct(product))
             fetchData()
 
         } catch (error) {
