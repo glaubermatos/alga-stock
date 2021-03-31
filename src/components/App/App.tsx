@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '../../shared/Container';
 import Header from '../Header';
 
-import ProductsCRUD from '../Products/PeoductsCRUD'
+import ProductsCRUD from '../Products/ProductsCRUD'
 
 import './App.css';
 

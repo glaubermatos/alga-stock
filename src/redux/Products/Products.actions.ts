@@ -3,7 +3,7 @@ import { Action } from "./Products.reducer";
 
 export const insertNewProduct = (): Action<Product> => {
     return {
-        type: '',
+        type: 'INSERT_NEW_PRODUCT',
         payload: {
             _id: 'asdg4246re',
             name: 'Cookie',
