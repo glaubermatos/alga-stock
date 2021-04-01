@@ -9,7 +9,7 @@ import { TableHeader } from '../../shared/Table/Table'
 import { Product } from '../../shared/Table/Table.mockdata'
 import { ProductCreator } from '../../components/Products/ProductForm'
 
-import { insertNewProduct } from '../../redux/Products/Products.actions'
+import { getProducts, insertNewProduct } from '../../redux/Products/Products.actions'
 
 import {
     getAllProducts,
@@ -43,8 +43,8 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
 
     const fetchData = async () => {
         // const _products = await getAllProducts()
-
         // setProducts(_products)
+        dispatch(getProducts())
     }
 
     const handleProductSubmit = async (product: ProductCreator) => {
