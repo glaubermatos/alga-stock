@@ -31,13 +31,7 @@ const Products: Product[] = [
         name: 'Apple 1KG',
         price: 0.20,
         stock: 200
-    },
-    {
-        _id: '5',
-        name: 'Cookies',
-        price: 0.75,
-        stock: 20
-    },
+    }
 ]
 
 

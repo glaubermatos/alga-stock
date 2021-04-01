@@ -47,7 +47,6 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
         // setProducts(_products)
     }
 
-
     const handleProductSubmit = async (product: ProductCreator) => {
         try {
             // await createSingleProduct(product)

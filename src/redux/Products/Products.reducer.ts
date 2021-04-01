@@ -8,10 +8,13 @@ export interface Action<T = any> {
 export default function (state = Products, action: Action): Product[] {
     switch (action.type) {
         case 'INSERT_NEW_PRODUCT':
-            return [...state, {
-                ...action.payload,
-                _id: String(state.length = 1)
-            }]
+            return [
+                ...state,
+                {
+                    _id: String(state.length + 1),
+                    ...action.payload
+                }
+            ]
 
         case 'FETCH_ALL_PRODUCTS':
             return state
