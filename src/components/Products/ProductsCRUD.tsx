@@ -44,7 +44,11 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
     const fetchData = async () => {
         // const _products = await getAllProducts()
         // setProducts(_products)
-        dispatch(getProducts())
+        try {
+            await dispatch(getProducts())
+        } catch (error) {
+            Swal.fire('Oops!', error.message, 'error')
+        }
     }
 
     const handleProductSubmit = async (product: ProductCreator) => {
