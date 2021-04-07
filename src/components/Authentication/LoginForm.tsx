@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router'
 import Swal from 'sweetalert2'
 
 import { login } from '../../redux/Authentication/Authentication.actions'
@@ -15,6 +16,7 @@ const initialFormState = {
 
 const LoginForm = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const [form, setForm] = useState(initialFormState)
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +30,7 @@ const LoginForm = () => {
     const handleLogin = async () => {
         try {
             await dispatch(login(form))
-
+            history.push('/')
         } catch (error) {
             Swal.fire(
                 'Oops!',

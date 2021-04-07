@@ -3,6 +3,7 @@ import React from 'react'
 import Header from '../components/Header'
 import Container from '../shared/Container'
 import ProductsCRUD from '../components/Products/ProductsCRUD'
+import withPermission from '../utils/HOC/withPermission'
 
 const HomeView = () => {
     return (<>
@@ -14,4 +15,4 @@ const HomeView = () => {
     </>)
 }
 
-export default HomeView
+export default withPermission(['admin', 'customer'], '/login')(HomeView)
