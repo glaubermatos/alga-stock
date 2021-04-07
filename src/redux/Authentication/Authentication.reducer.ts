@@ -10,6 +10,9 @@ export default function (state: AuthenticationState = {}, action: Action): Authe
         case 'AUTHENTICATION_LOGIN':
             return { profile: action.payload }
 
+        case 'AUTHENTICATION_LOGOUT':
+            return {}
+
         default:
             return state
     }

@@ -31,5 +31,5 @@ const mapStateToProps = () => ({
 })
 
 export default connect(mapStateToProps)(
-    withPermission(['admin', 'customer'], '/login')(ProfileView)
+    withPermission(['admin', 'customer'], '/')(ProfileView)
 )
