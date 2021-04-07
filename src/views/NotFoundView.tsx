@@ -14,13 +14,13 @@ const NotFoundView = () => {
             fontWeight: 900,
         }}>404</h1>
         <p>Não encontrado</p>
-        <Link to='/' style={{
+        <Link to='/products' style={{
             color: '#09f',
             textDecoration: 'none',
             textTransform: 'uppercase',
             marginTop: 10
         }}>
-            Voltar para a Home
+            Voltar para a lista de Produtos
         </Link>
     </div>
 }

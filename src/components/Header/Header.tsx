@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 import { RootState } from '../../redux'
@@ -39,10 +39,28 @@ const Header: React.FC<HeaderProps> = (props) => {
 
     return (
         <header className='AppHeader'>
-            <h1>{props.title}</h1>
+            <Link
+                to="/products"
+                style={{ color: '#fff', textDecoration: 'none' }}
+            >
+                <h1>{props.title}</h1>
+            </Link>
             <p>
                 Stock <strong>{props.stockProducts}</strong>
             </p>
+
+            {
+                isLoggedIn
+                    ? (
+                        <Link
+                            to="/profile"
+                            style={{ color: '#fff', textDecoration: 'none' }}
+                        >
+                            Profile
+                        </Link>
+                    ) : null
+            }
+
             <span style={{ cursor: 'pointer' }}
                 onClick={handleLoginLogout}
             >
