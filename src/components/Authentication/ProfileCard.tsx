@@ -1,7 +1,6 @@
 import React from 'react'
 import Form from '../../shared/Form'
 import Input from '../../shared/Input'
-import withPermission from '../../utils/HOC/withPermission'
 
 export interface User {
     name: string
