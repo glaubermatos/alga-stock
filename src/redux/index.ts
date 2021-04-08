@@ -17,13 +17,16 @@ const persistedReducer = persistReducer({
     blacklist: ['products']
 }, reducers)
 
+const enhancers = [
+    applyMiddleware(thunk),
+    //em navegadores que nao possuem o redux-devtools o valor dessa propriedade vem undefined
+    // @ts-ignore
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+].filter(e => e)// o filter serve para remover os itens undefined contidos no array
+
 const store = createStore(
     persistedReducer,
-    compose(
-        applyMiddleware(thunk),
-        // @ts-ignore
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+    compose(...enhancers)
 )
 
 const persistor = persistStore(store)
